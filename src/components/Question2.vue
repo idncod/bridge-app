@@ -12,8 +12,9 @@
         v-model="purchaseOrders"
         @input="updatePurchaseOrders"
         placeholder="1,300"
+        data-test="question2-input"
       />
-      <button @click="nextQuestion"> > </button>
+      <button @click="nextQuestion" data-test="continue2-button"> > </button>
     </div>
   </div>
 </template>

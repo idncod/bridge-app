@@ -13,8 +13,9 @@
         v-model="question1"
         @input="updateTotalSpend"
         placeholder="50000"
+        data-test="question1-input"
       />
-      <button @click="nextQuestion"> > </button>
+      <button @click="nextQuestion" data-test="continue1-button"> > </button>
     </div>
   </div>
 </template>

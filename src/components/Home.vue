@@ -1,33 +1,55 @@
 <template>
   <div class="relative flex flex-col items-center justify-center min-h-screen text-center">
     <div :style="backgroundImageStyle" class="blur-bg"></div>
-    <h1 class="text-red-600 text-2xl font-bold mb-4 relative z-10">CALCULATING YOUR TOTAL COSTS</h1>
+    <div class="white-overlay"></div>
+    <h1 class="text-red-600 text-2xl font-bold mb-4 relative z-10">
+      CALCULATING YOUR TOTAL COSTS
+    </h1>
 
-    <div class="grid grid-cols-3 gap-4 bg-white p-8 rounded-lg shadow-lg relative z-10">
-      <div v-for="(option, index) in options" :key="index" class="flex items-center space-x-2">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div
+          v-for="(option, index) in options"
+          :key="index"
+          class="flex items-center justify-between space-x-2 h-auto w-auto bg-white rounded-full p-4 shadow-md">
         <input
             type="checkbox"
             v-model="option.selected"
             @change="updateTotalCost"
-            class="form-checkbox h-6 w-6 text-purple-600"
         />
-        <label class="text-lg font-semibold text-purple-700">{{ option.name }}: £{{ option.cost.toFixed(2) }}</label>
+        <CheckCircleIcon class="w-6 h-6 mr-3" />
+
+        <span class="optionName">
+            {{ option.name }}:
+        </span>
+        <div class="cost-container">
+          <span class="text-xs estimate-text">
+            ESTIMATE
+          </span>
+          <br />
+          <span class="estimate-value">
+          £{{ option.cost.toFixed(2) }}
+          </span>
+        </div>
       </div>
     </div>
-
-    <p class="text-xl font-semibold text-red-600 mt-8 relative z-10">
-      Total: £{{ totalCost.toFixed(2) }}
-    </p>
-
-    <button @click="goToQuestions" class="px-6 py-3 bg-red-500 text-white font-bold rounded-full mt-4 hover:bg-red-600 relative z-10">
+    <div class="total-box">
+    <span class="total-box">
+      Total:
+    </span>
+    <span class="total-value">
+      £{{ totalCost.toFixed(2) }}
+    </span>
+    </div>
+    <button @click="goToQuestions" data-test="continue-button" class="px-6 py-3 bg-red-500 text-white font-bold rounded-full mt-4 hover:bg-red-600 relative z-10">
       Continue
     </button>
   </div>
 </template>
 
+
 <script>
 import homeBackground from "@/assets/home.png";
-
+import CheckCircleIcon from '../assets/check-circle.svg'
 export default {
   data() {
     return {
@@ -57,7 +79,7 @@ export default {
         filter: "blur(10px)",
         height: "100vh",
         width: "100%",
-        position: "fixed",
+        position: "absolute",
         top: 0,
         left: 0,
         zIndex: -1,
@@ -124,5 +146,56 @@ export default {
 .blur-bg {
   @apply absolute inset-0 bg-no-repeat bg-cover bg-center filter blur-lg;
   z-index: -1;
+}
+
+.white-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: -1;
+}
+
+.option-box {
+  @apply flex items-center p-4 bg-white rounded-lg shadow-lg space-x-4;
+}
+
+.option-box input[type="checkbox"] {
+  @apply form-checkbox h-6 w-6 text-purple-600 bg-white rounded-lg;
+}
+
+.option-box span {
+  @apply text-lg text-gray-700;
+}
+
+.option-box .cost-container {
+  @apply text-right;
+}
+
+.option-box .cost-container .cost-estimate {
+  @apply text-lg text-gray-700;
+}
+
+.option-box .cost-container .cost-value {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.total-box {
+  @apply bg-white rounded-lg p-4 shadow-lg flex items-center justify-between col-span-1 sm:col-span-3 md:col-span-1 md:ml-20 sm:col-start-2 sm:col-end-2;
+}
+
+.total-box .total-label {
+  @apply text-lg font-bold text-purple-700;
+}
+
+.total-box .total-value {
+  @apply text-2xl font-bold text-red-600;
+}
+
+
+button {
+  @apply px-6 py-3 bg-red-500 text-white font-bold rounded-full mt-4 hover:bg-red-600;
 }
 </style>

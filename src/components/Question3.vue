@@ -11,8 +11,9 @@
         v-model="suppliers"
         @input="updateSuppliers"
         placeholder="30"
+        data-test="question3-input"
       />
-      <button @click="viewResults"> > </button>
+      <button @click="viewResults" data-test="continue3-button"> > </button>
     </div>
   </div>
 </template>
