@@ -8,40 +8,64 @@ export default defineConfig({
     ],
     theme: {
         colors: {
+            estimateColor: '#C7B3DD',
+            estimateValue: '#5F259F',
+            optionNameColor: '#5F259F',
             red: {
-                500: '#FF0000',  // Primary red color for text and buttons
-                600: '#E60000',  // Darker red for hover states
+                500: '#FF0000',
+                600: '#E60000',
             },
             purple: {
-                500: '#7B61FF',  // Primary purple color for highlights
-                600: '#5E3EFF',  // Darker purple for hover effects
+                500: '#7B61FF',
+                600: '#5E3EFF',
             },
             gray: {
-                800: '#333333',  // Dark gray for primary text
-                700: '#4B4B4B',  // Lighter gray for secondary text
-                500: '#888888',  // Lighter gray for labels
-                200: '#E0E0E0',  // Light gray for borders
+                800: '#333333',
+                700: '#4B4B4B',
+                500: '#888888',
+                200: '#E0E0E0',
             },
             white: '#FFFFFF',
         },
         extend: {
+            typography: {
+                estimate: {
+                    color: '#C7B3DD',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                },
+                estimateValue: {
+                    fontSize: '12px',
+                },
+                optionName: {
+                    color: '#5F259F',
+                    fontSize: '16px',
+                    fontWeight: 'normal',
+                }
+            },
             boxShadow: {
-                card: '0 4px 12px rgba(0, 0, 0, 0.1)',  // Custom shadow for card components
-                button: '0 6px 16px rgba(0, 0, 0, 0.2)',  // Deeper shadow for buttons
+                card: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                button: '0 6px 16px rgba(0, 0, 0, 0.2)',
             },
             borderRadius: {
-                full: '9999px',  // Fully rounded for pills and buttons
-                lg: '12px',      // Large rounding for cards and containers
+                full: '9999px',
+                lg: '200px',
             },
             fontSize: {
-                xl: ['1.5rem', { lineHeight: '2rem' }], // Extra-large font for titles
-                lg: ['1.25rem', { lineHeight: '1.75rem' }], // Large font for subtitles
-                base: ['1rem', { lineHeight: '1.5rem' }],   // Regular font for body text
+                xl: ['1.5rem', { lineHeight: '2rem' }],
+                lg: ['1.25rem', { lineHeight: '1.75rem' }],
+                base: ['1rem', { lineHeight: '1.5rem' }],
             },
             backdropFilter: {
-                blur: 'blur(10px)',  // Background blur for frosted glass effect
+                blur: 'blur(10px)',
             },
         },
+    },
+    breakpoints: {
+      sm: '320px',
+      md: '640px',
+      lg: '768px',
+      xl: '1024px',
     },
     shortcuts: {
         'btn-primary': 'bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-full shadow-button',
@@ -49,5 +73,7 @@ export default defineConfig({
         'card': 'bg-white shadow-card rounded-lg p-4',
         'text-primary': 'text-gray-800 font-bold',
         'text-secondary': 'text-gray-500',
+        'estimate-text': 'text-estimateColor font-bold uppercase',
+        'estimate-value': 'text-estimateValue',
     },
 });
