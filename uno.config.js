@@ -28,7 +28,13 @@ export default defineConfig({
             white: '#FFFFFF',
         },
         extend: {
-            typography: {
+                keyframes: {
+                    fadeIn: 'from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); }',
+                },
+                animation: {
+                    fadeIn: 'fadeIn 6s ease-out',
+                },
+                typography: {
                 estimate: {
                     color: '#C7B3DD',
                     fontWeight: 'bold',
@@ -75,5 +81,24 @@ export default defineConfig({
         'text-secondary': 'text-gray-500',
         'estimate-text': 'text-estimateColor font-bold uppercase',
         'estimate-value': 'text-estimateValue',
+        'page-enter-active': 'transition-all duration-500 ease-in-out',
+        'page-leave-active': 'transition-all duration-500 ease-in-out',
+        'page-enter-from': 'opacity-0 translate-y-4',
+        'page-leave-to': 'opacity-0 translate-y-4',
+        'global-bg': 'bg-cover bg-center bg-no-repeat min-h-screen',
     },
+    preflights: [
+        {
+            getCSS: () => `
+        body {
+          background-image: url('../assets/home.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          min-height: 100vh;
+          margin: 0;
+        }
+      `,
+        },
+    ],
 });
