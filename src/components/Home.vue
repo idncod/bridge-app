@@ -1,7 +1,5 @@
 <template>
   <div class="relative flex flex-col items-center justify-center min-h-screen text-center">
-    <div :style="backgroundImageStyle" class="blur-bg"></div>
-    <div class="white-overlay"></div>
     <h1 class="text-red-600 text-2xl font-bold mb-4 relative z-10">
       CALCULATING YOUR TOTAL COSTS
     </h1>
@@ -49,7 +47,7 @@
 
 <script>
 import homeBackground from "@/assets/home.png";
-import CheckCircleIcon from '../assets/check-circle.svg'
+
 export default {
   data() {
     return {
@@ -69,22 +67,6 @@ export default {
       question2: parseFloat(localStorage.getItem("question2")) || 1300.0,
       question3: parseFloat(localStorage.getItem("question3")) || 30,
     };
-  },
-  computed: {
-    backgroundImageStyle() {
-      return {
-        backgroundImage: `url(${homeBackground})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        filter: "blur(10px)",
-        height: "100vh",
-        width: "100%",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        zIndex: -1,
-      };
-    },
   },
   methods: {
     updateTotalCost() {
@@ -145,16 +127,6 @@ export default {
 <style>
 .blur-bg {
   @apply absolute inset-0 bg-no-repeat bg-cover bg-center filter blur-lg;
-  z-index: -1;
-}
-
-.white-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
   z-index: -1;
 }
 
