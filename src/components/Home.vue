@@ -31,12 +31,12 @@
       </div>
     </div>
     <div class="total-box">
-    <span class="total-box">
-      Total:
-    </span>
-    <span class="total-value">
-      £{{ totalCost.toFixed(2) }}
-    </span>
+      <span class="total-label">
+        Total:
+      </span>
+      <span class="total-value">
+        £{{ totalCost.toFixed(2) }}
+      </span>
     </div>
     <button @click="goToQuestions" data-test="continue-button" class="px-6 py-3 bg-red-500 text-white font-bold rounded-full mt-4 hover:bg-red-600 relative z-10">
       Continue

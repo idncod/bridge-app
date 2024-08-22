@@ -8,6 +8,8 @@ export default defineConfig({
     ],
     theme: {
         colors: {
+            purpleOne: '#5F259F',
+            redOne: '#DB2F20',
             estimateColor: '#C7B3DD',
             estimateValue: '#5F259F',
             optionNameColor: '#5F259F',
@@ -28,6 +30,9 @@ export default defineConfig({
             white: '#FFFFFF',
         },
         extend: {
+                fontWeight: {
+                    'bold': 'bold',
+                },
                 keyframes: {
                     fadeIn: 'from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); }',
                 },
@@ -86,6 +91,9 @@ export default defineConfig({
         'page-enter-from': 'opacity-0 translate-y-4',
         'page-leave-to': 'opacity-0 translate-y-4',
         'global-bg': 'bg-cover bg-center bg-no-repeat min-h-screen',
+        'total-box': 'bg-white rounded-lg p-4 shadow-md flex items-center justify-between col-span-1 sm:col-span-3 md:col-span-1 md:ml-20 sm:col-start-2 sm:col-end-2',
+        'total-label': 'text-lg font-bold text-purpleOne py-2 px-6 rounded-full',
+        'total-value': 'text-2xl text-redOne py-2 px-6 rounded-full' ,
     },
     preflights: [
         {
